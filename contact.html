@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Chuck’s Electric & Sons</title>
+  <meta name="description" content="Request an estimate or contact Chuck’s Electric & Sons. Serving NEPA since 1986." />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrap">
+        <a class="brand" href="/index.html">
+          <img src="/assets/img/logo.png" alt="Chuck’s Electric & Sons logo" />
+          <div class="title">
+            <strong>Chuck’s Electric & Sons</strong>
+            <span>Serving NEPA since 1986</span>
+          </div>
+        </a>
+
+        <nav class="nav" data-nav aria-label="Primary navigation">
+          <a href="/index.html">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/about.html">About</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn" href="tel:+1-000-000-0000">Call Now</a>
+          <a class="btn primary" href="#form">Request Estimate</a>
+        </div>
+
+        <button class="hamburger" data-hamburger aria-expanded="false" aria-controls="mobile-panel">Menu</button>
+      </div>
+
+      <div id="mobile-panel" class="mobile-panel" data-mobile-panel>
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/about.html">About</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/contact.html">Contact</a>
+        <div class="row">
+          <a class="btn" href="tel:+1-000-000-0000">Call Now</a>
+          <a class="btn primary" href="#form">Estimate</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact / Request Estimate</h2>
+          <p>Fast, clear next steps. Tell us what you need.</p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Call</h3>
+            <p class="fine">Best for urgent issues or quick questions.</p>
+            <div class="meta">
+              <a class="btn primary" href="tel:+1-000-000-0000">Call +1 (000) 000-0000</a>
+            </div>
+
+            <div class="hr"></div>
+
+            <h3>Service area</h3>
+            <p class="fine">Pike County • Wayne County • Surrounding communities</p>
+
+            <div class="hr"></div>
+
+            <h3>Hours</h3>
+            <p class="fine">Add business hours here.</p>
+          </div>
+
+          <div id="form" class="card">
+            <h3>Request an estimate</h3>
+            <p class="fine">We’ll review your request and follow up.</p>
+
+            <!-- OPTION A (no backend): mailto -->
+            <form class="form" action="mailto:info@chuckselectricandsons.com" method="post" enctype="text/plain">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="Name" autocomplete="name" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="Phone" autocomplete="tel" required />
+              </div>
+
+              <div class="field">
+                <label for="town">Town / Service Location</label>
+                <input id="town" name="Town" autocomplete="address-level2" required />
+              </div>
+
+              <div class="field">
+                <label for="service">Service Needed</label>
+                <select id="service" name="Service Needed" required>
+                  <option value="">Select one</option>
+                  <option>Residential</option>
+                  <option>Commercial</option>
+                  <option>Panels & Power</option>
+                  <option>Lighting</option>
+                  <option>Troubleshooting</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="details">Details</label>
+                <textarea id="details" name="Details" placeholder="Describe the issue or project briefly." required></textarea>
+              </div>
+
+              <button class="btn primary" type="submit">Send Request</button>
+              <p class="fine" style="margin:0;">
+                Note: On static sites, email forms work best with a form service.
+                If you want, I’ll convert this to Formspree / Netlify Forms.
+              </p>
+            </form>
+
+            <!-- OPTION B (recommended): Formspree
+            1) Create a Formspree form, copy your endpoint URL
+            2) Replace action="" below with your endpoint
+            <form class="form" action="https://formspree.io/f/XXXXXXX" method="POST">
+              ...
+            </form>
+            -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta">
+    <a class="btn" href="tel:+1-000-000-0000">Call</a>
+    <a class="btn primary" href="#form">Estimate</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Chuck’s Electric & Sons</strong>
+          <p class="fine">Serving NEPA since 1986.</p>
+          <p class="fine">Phone: <a href="tel:+1-000-000-0000">+1 (000) 000-0000</a></p>
+        </div>
+        <div>
+          <p class="fine">
+            <strong>Quick Links</strong><br/>
+            <a href="/index.html">Home</a><br/>
+            <a href="/services.html">Services</a><br/>
+            <a href="/about.html">About</a><br/>
+            <a href="/gallery.html">Gallery</a>
+          </p>
+          <p class="fine">© <span id="year"></span> Chuck’s Electric & Sons.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
