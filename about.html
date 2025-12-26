@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Chuck’s Electric & Sons</title>
+  <meta name="description" content="Family-owned electrical contractor serving NEPA since 1986. Meet the team and learn how we work." />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrap">
+        <a class="brand" href="/index.html">
+          <img src="/assets/img/logo.png" alt="Chuck’s Electric & Sons logo" />
+          <div class="title">
+            <strong>Chuck’s Electric & Sons</strong>
+            <span>Serving NEPA since 1986</span>
+          </div>
+        </a>
+
+        <nav class="nav" data-nav aria-label="Primary navigation">
+          <a href="/index.html">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/about.html">About</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn" href="tel:+1-000-000-0000">Call Now</a>
+          <a class="btn primary" href="/contact.html">Request Estimate</a>
+        </div>
+
+        <button class="hamburger" data-hamburger aria-expanded="false" aria-controls="mobile-panel">Menu</button>
+      </div>
+
+      <div id="mobile-panel" class="mobile-panel" data-mobile-panel>
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/about.html">About</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/contact.html">Contact</a>
+        <div class="row">
+          <a class="btn" href="tel:+1-000-000-0000">Call Now</a>
+          <a class="btn primary" href="/contact.html">Estimate</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Us</h2>
+          <p>Local, dependable, and focused on doing the job right.</p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Family-owned since 1986</h3>
+            <p>
+              Chuck’s Electric & Sons is a family-owned electrical contractor serving Northeastern Pennsylvania.
+              Our approach is simple: do safe work, communicate clearly, and leave the job site clean.
+            </p>
+            <div class="meta">
+              <span class="pill">NEPA</span>
+              <span class="pill">Since 1986</span>
+              <span class="pill">Residential & Commercial</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>How we work</h3>
+            <p>
+              We start with the problem or project scope, confirm the safest and most practical solution,
+              and then execute with care and attention to detail. If something changes, you’ll know immediately.
+            </p>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="section-title">
+          <h2>Meet the Team</h2>
+          <p>Keep your existing photos—just modern presentation.</p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <img src="/assets/img/team-1.jpg" alt="Team member" style="border-radius:14px; margin-bottom:12px; border:1px solid rgba(201,206,211,.14);" />
+            <h3>Chuck (Owner)</h3>
+            <p>Short bio line. Replace with accurate names/roles.</p>
+          </div>
+          <div class="card">
+            <img src="/assets/img/team-1.jpg" alt="Team member" style="border-radius:14px; margin-bottom:12px; border:1px solid rgba(201,206,211,.14);" />
+            <h3>Team Member</h3>
+            <p>Short bio line. Replace with accurate names/roles.</p>
+          </div>
+          <div class="card">
+            <img src="/assets/img/team-1.jpg" alt="Team member" style="border-radius:14px; margin-bottom:12px; border:1px solid rgba(201,206,211,.14);" />
+            <h3>Team Member</h3>
+            <p>Short bio line. Replace with accurate names/roles.</p>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="card">
+          <h3>Request an estimate</h3>
+          <p>Tell us what you need and where you’re located. We’ll respond with next steps.</p>
+          <div class="meta">
+            <a class="btn primary" href="/contact.html">Request Estimate</a>
+            <a class="btn" href="tel:+1-000-000-0000">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta">
+    <a class="btn" href="tel:+1-000-000-0000">Call</a>
+    <a class="btn primary" href="/contact.html">Estimate</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Chuck’s Electric & Sons</strong>
+          <p class="fine">Serving NEPA since 1986.</p>
+          <p class="fine">Phone: <a href="tel:+1-000-000-0000">+1 (000) 000-0000</a></p>
+        </div>
+        <div>
+          <p class="fine">
+            <strong>Quick Links</strong><br/>
+            <a href="/index.html">Home</a><br/>
+            <a href="/services.html">Services</a><br/>
+            <a href="/gallery.html">Gallery</a><br/>
+            <a href="/contact.html">Contact</a>
+          </p>
+          <p class="fine">© <span id="year"></span> Chuck’s Electric & Sons.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
