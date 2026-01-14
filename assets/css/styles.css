@@ -284,3 +284,39 @@ textarea{min-height: 120px; resize: vertical}
   .bullets{grid-template-columns: 1fr}
   .staff{grid-template-columns: 1fr}
 }
+/* Powered by Grand Line Analytics */
+.powered-by {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+}
+
+.powered-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.powered-logo {
+  height: 18px;
+  width: 18px;
+  opacity: 0.95;
+}
+
+.powered-text {
+  color: #2dd4bf; /* Grand Line teal */
+  line-height: 1;
+}
+
+.powered-text strong {
+  color: #f5c16c; /* Grand Line gold */
+  font-weight: 600;
+}
+
+.powered-link:hover .powered-text {
+  text-decoration: underline;
+}
