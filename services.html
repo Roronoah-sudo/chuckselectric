@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services | Chucks Electric & Sons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Electrical services: residential, commercial, and generator installation. Serving Pike, Wayne, and surrounding counties in Northeast Pennsylvania.">
+<style>
+    :root {
+        --color-bg: #0a0a0a;
+        --color-bg-alt: #111111;
+        --color-header-bg: #0a0a0a;
+        --color-footer-bg: #050505;
+        --color-text: #a1a1aa;
+        --color-text-strong: #ffffff;
+        --color-accent: #ff6b35;
+        --color-accent-light: #ff8c5a;
+        --color-card-border: rgba(255,107,53,0.25);
+        --color-button-text: #0a0a0a;
+    }
+    body.dark-mode {
+        --color-bg: #000000;
+        --color-bg-alt: #0a0a0a;
+        --color-header-bg: #000000;
+        --color-footer-bg: #000000;
+        --color-text: #9ca3af;
+        --color-text-strong: #f9fafb;
+        --color-card-border: rgba(255,107,53,0.35);
+        --color-button-text: #000000;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--color-bg); color: var(--color-text); transition: background 0.35s ease, color 0.35s ease; }
+    a { color: inherit; }
+    header { background: var(--color-header-bg); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; box-shadow: 0 2px 12px rgba(0,0,0,0.6); z-index: 100; border-bottom: 1px solid var(--color-card-border); }
+    header a.logo-link { display: inline-flex; align-items: center; }
+    header img { height: 60px; border-radius: 8px; transition: transform 0.25s ease; }
+    header img:hover { transform: translateY(-1px); }
+    nav { display: flex; align-items: center; }
+    nav a { font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); margin-left: 28px; text-decoration: none; font-size: 13px; transition: color 0.2s ease; opacity: 0.9; }
+    nav a.active { color: var(--color-accent); opacity: 1; font-weight: 700; }
+    nav a:hover { color: var(--color-accent); opacity: 1; }
+    .theme-toggle { margin-left: 28px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-accent); font-size: 11px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.14em; transition: background 0.2s ease, color 0.2s ease; }
+    .theme-toggle:hover { background: var(--color-accent); color: var(--color-button-text); }
+    .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; margin: 4px 0; background: var(--color-text-strong); border-radius: 999px; transition: transform 0.2s ease, opacity 0.2s ease; }
+    body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    main { max-width: 1100px; margin: 50px auto 70px auto; padding: 0 20px; }
+    .crumbs { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; opacity: 0.75; margin-bottom: 12px; }
+    .crumbs a { text-decoration: none; color: var(--color-text); }
+    .crumbs a:hover { color: var(--color-accent); }
+    .crumbs span { margin: 0 4px; }
+    .pill { display: inline-block; border-radius: 999px; border: 1px solid rgba(255,107,53,0.6); padding: 4px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 12px; font-weight: 600; }
+    h1 { color: var(--color-text-strong); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 26px; margin: 0 0 10px 0; }
+    .tagline { font-size: 16px; color: var(--color-accent); font-weight: 600; margin-bottom: 30px; }
+    .service-blocks { display: flex; flex-direction: column; gap: 24px; margin-top: 30px; }
+    .service-block { background: var(--color-bg-alt); border: 1px solid var(--color-card-border); border-radius: 16px; padding: 32px; transition: border-color 0.3s ease; }
+    .service-block:hover { border-color: var(--color-accent); }
+    .service-block h2 { color: var(--color-text-strong); font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px 0; }
+    .service-tagline { font-size: 14px; color: var(--color-accent); font-weight: 600; margin-bottom: 16px; }
+    .service-block p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
+    .service-block ul { margin: 0 0 16px 0; padding-left: 20px; font-size: 14px; line-height: 1.8; }
+    .service-cta { display: inline-block; padding: 10px 20px; border: 1px solid var(--color-accent); border-radius: 999px; color: var(--color-accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+    .service-cta:hover { background: var(--color-accent); color: var(--color-button-text); }
+    .full-width-note { background: rgba(255,107,53,0.08); border-left: 3px solid var(--color-accent); padding: 20px 24px; border-radius: 0 12px 12px 0; margin-top: 40px; font-size: 14px; line-height: 1.7; }
+    footer { text-align: center; padding: 30px 20px; background: var(--color-footer-bg); border-top: 1px solid var(--color-card-border); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .footer-logo { height: 50px; border-radius: 8px; }
+    .footer-credit { margin-top: 10px; opacity: 0.7; }
+    .footer-credit a { color: var(--color-accent); text-decoration: none; }
+    @media (max-width: 880px) {
+        header { padding: 12px 16px; }
+        .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+        header img { height: 50px; }
+        header nav { position: fixed; top: 64px; left: 0; right: 0; background: var(--color-header-bg); padding: 10px 18px 16px 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; box-shadow: 0 8px 18px rgba(0,0,0,0.6); transform: translateY(-120%); opacity: 0; pointer-events: none; transition: transform 0.25s ease, opacity 0.25s ease; z-index: 90; border-bottom: 1px solid var(--color-card-border); }
+        body.nav-open header nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        header nav a, .theme-toggle { margin-left: 0; }
+        .theme-toggle { align-self: stretch; text-align: center; margin-top: 4px; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <a href="index.html" class="logo-link"><img id="headerLogo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo"></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#contact">Contact</a>
+        <button id="themeToggle" class="theme-toggle" type="button">Dark mode</button>
+    </nav>
+</header>
+<main>
+    <nav class="crumbs"><a href="index.html">Home</a><span>/</span><span>Services</span></nav>
+    <div class="pill">Chucks Electric & Sons</div>
+    <h1>Our Services</h1>
+    <div class="tagline">Full-service electrical solutions for residential, commercial, and backup power needs.</div>
+    <div class="service-blocks">
+        <div class="service-block">
+            <h2>Residential Electrical</h2>
+            <div class="service-tagline">Complete electrical services for your home.</div>
+            <p><strong>Services include:</strong></p>
+            <ul>
+                <li>Renovation and new construction wiring</li>
+                <li>Faulty circuitry diagnosis and repair</li>
+                <li>All-purpose lighting installation</li>
+                <li>Smoke detector installation and testing</li>
+                <li>Wi-Fi activated technology (Ring, smart locks, etc.)</li>
+                <li>Electric vehicle (EV) charging port installation</li>
+                <li>Electrical panel upgrades</li>
+                <li>Smart thermostats (Google Nest, Honeywell, Mysa)</li>
+                <li>Mobile home and converter electrical</li>
+                <li>Water heater connections</li>
+                <li>Septic pump wiring</li>
+                <li>Whole-house surge protectors</li>
+            </ul>
+            <a class="service-cta" href="index.html#contact">Request residential estimate</a>
+        </div>
+        <div class="service-block">
+            <h2>Commercial Electrical</h2>
+            <div class="service-tagline">Keep your business safe and powered.</div>
+            <p><strong>Services include:</strong></p>
+            <ul>
+                <li>Small to mid-size commercial builds</li>
+                <li>Maintenance contracts and scheduled service</li>
+                <li>Emergency service calls</li>
+                <li>Office and retail build-outs</li>
+                <li>Parking lot and exterior lighting</li>
+                <li>Panel upgrades and circuit additions</li>
+                <li>Code compliance inspections</li>
+            </ul>
+            <p><strong>Service area:</strong> Pike and Wayne counties for full service. Monroe, Northampton, and Lehigh counties for select commercial work.</p>
+            <a class="service-cta" href="index.html#contact">Request commercial estimate</a>
+        </div>
+        <div class="service-block">
+            <h2>Generator Installation & Service</h2>
+            <div class="service-tagline">Stay powered when the grid goes down.</div>
+            <p><strong>Services include:</strong></p>
+            <ul>
+                <li>Portable generator hookup and transfer switches</li>
+                <li>Standby generator installation</li>
+                <li>Annual generator maintenance ($575)</li>
+                <li>Battery testing and replacement</li>
+                <li>Voltage readings and contact cleaning</li>
+                <li>Oil changes and filter replacement</li>
+                <li>Spark plug service</li>
+            </ul>
+            <p><strong>Brands:</strong> Generac, Kohler, Briggs & Stratton, and more.</p>
+            <a class="service-cta" href="index.html#contact">Schedule generator service</a>
+        </div>
+        <div class="service-block">
+            <h2>Smart Home & Modern Technology</h2>
+            <div class="service-tagline">Upgrade your home for the modern era.</div>
+            <p><strong>Services include:</strong></p>
+            <ul>
+                <li>Smart home monitor installation ($850)</li>
+                <li>Smart thermostat setup and wiring</li>
+                <li>Wi-Fi doorbell and camera installation</li>
+                <li>USB outlet installation</li>
+                <li>Home automation wiring</li>
+                <li>Electric vehicle charging stations</li>
+            </ul>
+            <a class="service-cta" href="index.html#contact">Discuss your project</a>
+        </div>
+    </div>
+    <p class="full-width-note">
+        Not sure what you need? Call us at <strong>570-369-3827</strong> or use the contact form to describe your project. We'll provide an honest assessment and fair quote.
+    </p>
+</main>
+<footer>
+    <div class="footer-inner">
+        <img id="footerLogo" class="footer-logo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo">
+        <div>© 2025 Chucks Electric & Sons — All Rights Reserved</div>
+        <div class="footer-credit">Powered by <a href="https://grandlineanalytics.com" target="_blank">Grand Line Analytics</a></div>
+    </div>
+</footer>
+<script>
+(function(){const body=document.body,toggle=document.getElementById('themeToggle'),navToggle=document.getElementById('navToggle');function applyTheme(t){const d=t==='dark';body.classList.toggle('dark-mode',d);if(toggle)toggle.textContent=d?'Light mode':'Dark mode'}const saved=localStorage.getItem('ces-theme');applyTheme(saved==='dark'?'dark':'light');if(toggle)toggle.addEventListener('click',function(){const n=body.classList.contains('dark-mode')?'light':'dark';applyTheme(n);localStorage.setItem('ces-theme',n)});if(navToggle)navToggle.addEventListener('click',function(){body.classList.toggle('nav-open')});document.querySelectorAll('header nav a').forEach(l=>l.addEventListener('click',()=>body.classList.remove('nav-open')))})();
+</script>
+</body>
+</html>

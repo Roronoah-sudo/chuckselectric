@@ -1,338 +1,1388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chucks Electric & Sons | NEPA Electricians Since 1986</title>
-  <meta name="description" content="Family-owned electricians serving Northeast Pennsylvania since 1986. Residential, commercial, and generator services across Pike and Wayne counties." />
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+<meta charset="UTF-8">
+<title>Chucks Electric & Sons | NEPA Electricians Since 1986</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Family-owned electricians serving Northeast Pennsylvania since 1986. Residential, commercial, and generator services across Pike and Wayne counties.">
+<meta name="keywords" content="electrician NEPA, Pike County electrician, Wayne County electrical, generator installation, residential electrical, commercial electrical">
+
+<style>
+    /* ---------- THEME TOKENS ---------- */
+    :root {
+        --color-bg: #0a0a0a;
+        --color-bg-alt: #111111;
+        --color-header-bg: #0a0a0a;
+        --color-footer-bg: #050505;
+        --color-text: #a1a1aa;
+        --color-text-strong: #ffffff;
+        --color-accent: #ff6b35;
+        --color-accent-light: #ff8c5a;
+        --color-card-border: rgba(255,107,53,0.25);
+        --color-contact-border: #ff6b35;
+        --color-button-text: #0a0a0a;
+    }
+
+    body.dark-mode {
+        --color-bg: #000000;
+        --color-bg-alt: #0a0a0a;
+        --color-header-bg: #000000;
+        --color-footer-bg: #000000;
+        --color-text: #9ca3af;
+        --color-text-strong: #f9fafb;
+        --color-accent: #ff6b35;
+        --color-accent-light: #ff8c5a;
+        --color-card-border: rgba(255,107,53,0.35);
+        --color-contact-border: #374151;
+        --color-button-text: #000000;
+    }
+
+    /* ---------- BASE LAYOUT ---------- */
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--color-bg);
+        color: var(--color-text);
+        transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    a { color: inherit; }
+
+    /* ---------- LANDING SPLASH ---------- */
+    #landing {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, 
+            #0a0a0a 0%, 
+            #111111 30%,
+            #1a1a1a 60%,
+            #0a0a0a 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: #FFFFFF;
+        text-align: center;
+        font-family: inherit;
+        transition: opacity 0.8s ease;
+        overflow: hidden;
+    }
+
+    #landing.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Electric grid effect */
+    .electric-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(255,107,53,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,107,53,0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes gridPulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+    }
+
+    .landing-inner {
+        max-width: 520px;
+        padding: 2rem;
+        z-index: 10;
+        position: relative;
+    }
+
+    .logo-anim-wrap {
+        position: relative;
+        display: inline-block;
+    }
+
+    .logo-anim {
+        width: 280px;
+        max-width: 85vw;
+        filter: drop-shadow(0 0 30px rgba(255,107,53,0.4));
+        animation: logoPulse 3s ease-in-out infinite;
+        position: relative;
+        z-index: 10;
+        border-radius: 12px;
+    }
+
+    @keyframes logoPulse {
+        0%, 100% { filter: drop-shadow(0 0 20px rgba(255,107,53,0.3)); }
+        50% { filter: drop-shadow(0 0 40px rgba(255,107,53,0.6)); }
+    }
+
+    #landing h1 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.6rem;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        color: var(--color-text-strong);
+    }
+
+    #landing p {
+        font-size: 1rem;
+        opacity: 0.85;
+        margin-bottom: 1.8rem;
+        line-height: 1.5;
+    }
+
+    #enter-site {
+        padding: 14px 36px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+        color: var(--color-button-text);
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    #enter-site:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px rgba(255,107,53,0.5);
+    }
+
+    /* ---------- HEADER & NAV ---------- */
+    header {
+        background: var(--color-header-bg);
+        padding: 14px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        z-index: 100;
+        transition: background 0.35s ease, box-shadow 0.35s ease;
+        border-bottom: 1px solid var(--color-card-border);
+    }
+
+    header a.logo-link {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    header img {
+        height: 60px;
+        transition: filter 0.35s ease, transform 0.25s ease;
+        border-radius: 8px;
+    }
+
+    header img:hover {
+        transform: translateY(-1px);
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav a {
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-text);
+        margin-left: 28px;
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+        opacity: 0.9;
+    }
+
+    nav a.active {
+        color: var(--color-accent);
+        opacity: 1;
+        font-weight: 700;
+    }
+
+    nav a:hover {
+        color: var(--color-accent);
+        transform: translateY(-1px);
+        opacity: 1;
+    }
+
+    .theme-toggle {
+        margin-left: 28px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--color-accent);
+        background: transparent;
+        color: var(--color-accent);
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        transform: translateY(-1px);
+        box-shadow: 0 0 12px rgba(255,107,53,0.5);
+    }
+
+    .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        padding: 8px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin: 4px 0;
+        background: var(--color-text-strong);
+        border-radius: 999px;
+        transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    body.nav-open .nav-toggle span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    body.nav-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+    body.nav-open .nav-toggle span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    main#site-content.hidden {
+        display: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 80px 60px;
+        background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+        border-bottom: 1px solid var(--color-card-border);
+    }
+
+    .hero-content {
+        max-width: 560px;
+    }
+
+    .hero h1 {
+        color: var(--color-text-strong);
+        font-size: 42px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 0 0 16px 0;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+    .hero .divider {
+        width: 60px;
+        height: 3px;
+        background: var(--color-accent);
+        margin-bottom: 28px;
+        border-radius: 2px;
+    }
+
+    .service-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+        color: var(--color-button-text);
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border-radius: 999px;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .service-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 24px rgba(255,107,53,0.5);
+    }
+
+    .hero-logo {
+        height: 220px;
+        filter: drop-shadow(0 0 30px rgba(255,107,53,0.3));
+        border-radius: 12px;
+    }
+
+    /* ---------- TRUST BADGES ---------- */
+    .trust-strip {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 30px 20px;
+        background: var(--color-bg-alt);
+        border-bottom: 1px solid var(--color-card-border);
+    }
+
+    .trust-badge {
+        text-align: center;
+    }
+
+    .trust-badge .value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--color-accent);
+        letter-spacing: 0.02em;
+    }
+
+    .trust-badge .label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.8;
+        margin-top: 4px;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 70px 30px;
+        text-align: center;
+    }
+
+    .about h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .about p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 16px;
+    }
+
+    /* ---------- SERVICES STRIP ---------- */
+    .services-strip {
+        padding: 60px 40px;
+        background: var(--color-bg-alt);
+        border-top: 1px solid var(--color-card-border);
+        border-bottom: 1px solid var(--color-card-border);
+    }
+
+    .services-strip-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto 40px auto;
+        flex-wrap: wrap;
+    }
+
+    .services-strip-header h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+    }
+
+    .services-strip-subtitle {
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .services-strip-cta a {
+        display: inline-block;
+        padding: 10px 22px;
+        border: 1px solid var(--color-accent);
+        border-radius: 999px;
+        color: var(--color-accent);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .services-strip-cta a:hover {
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        transform: translateY(-1px);
+    }
+
+    .services-strip-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .services-pill {
+        background: var(--color-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: 16px;
+        padding: 28px 24px;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .services-pill:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-4px);
+    }
+
+    .services-pill h3 {
+        color: var(--color-text-strong);
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0 0 12px 0;
+    }
+
+    .services-pill p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ---------- PROMOTIONS ---------- */
+    .promos {
+        padding: 60px 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .promos-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .promos-header h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+    }
+
+    .promos-header p {
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    .promos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .promo-card {
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-card-border);
+        border-radius: 16px;
+        padding: 28px 24px;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .promo-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-4px);
+    }
+
+    .promo-card.featured {
+        border-color: var(--color-accent);
+        position: relative;
+    }
+
+    .promo-card.featured::before {
+        content: '10% OFF';
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+
+    .promo-card h3 {
+        color: var(--color-text-strong);
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin: 0 0 10px 0;
+    }
+
+    .promo-card .price {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--color-accent);
+        margin-bottom: 10px;
+    }
+
+    .promo-card p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+    }
+
+    .promo-card ul {
+        margin: 0 0 16px 0;
+        padding-left: 18px;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .promo-card .promo-cta {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid var(--color-accent);
+        border-radius: 999px;
+        color: var(--color-accent);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .promo-card .promo-cta:hover {
+        background: var(--color-accent);
+        color: var(--color-button-text);
+    }
+
+    /* ---------- GALLERY PREVIEW ---------- */
+    .gallery-preview {
+        padding: 60px 40px;
+        background: var(--color-bg-alt);
+        border-top: 1px solid var(--color-card-border);
+    }
+
+    .gallery-preview-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .gallery-preview-header h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 1100px;
+        margin: 0 auto 30px auto;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.08);
+    }
+
+    .gallery-cta {
+        text-align: center;
+    }
+
+    .gallery-cta a {
+        display: inline-block;
+        padding: 10px 22px;
+        border: 1px solid var(--color-accent);
+        border-radius: 999px;
+        color: var(--color-accent);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .gallery-cta a:hover {
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        transform: translateY(-1px);
+    }
+
+    /* ---------- COVERAGE ---------- */
+    .coverage {
+        padding: 60px 40px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .coverage-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .coverage-header h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+    }
+
+    .coverage-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        align-items: start;
+    }
+
+    .county-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .county-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-card-border);
+        border-radius: 10px;
+        transition: border-color 0.2s ease;
+    }
+
+    .county-item:hover {
+        border-color: var(--color-accent);
+    }
+
+    .county-item.primary {
+        border-color: rgba(255,107,53,0.5);
+    }
+
+    .county-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--color-accent);
+    }
+
+    .county-item.secondary .county-dot {
+        opacity: 0.5;
+    }
+
+    .coverage-info h3 {
+        color: var(--color-text-strong);
+        font-size: 18px;
+        margin: 0 0 14px 0;
+    }
+
+    .coverage-info p {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+
+    .coverage-note {
+        padding: 14px 16px;
+        background: rgba(255,107,53,0.08);
+        border-left: 3px solid var(--color-accent);
+        border-radius: 0 8px 8px 0;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
+        padding: 60px 40px;
+        background: var(--color-bg-alt);
+        border-top: 1px solid var(--color-card-border);
+        text-align: center;
+    }
+
+    .contact h2 {
+        color: var(--color-text-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 22px;
+        margin: 0 0 20px 0;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .contact-info h3 {
+        color: var(--color-text-strong);
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0 0 16px 0;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .contact-info a {
+        color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+
+    .hours-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .hours-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--color-card-border);
+    }
+
+    .hours-list li:last-child {
+        border-bottom: none;
+    }
+
+    .hours-list span:last-child {
+        color: var(--color-accent);
+        font-weight: 600;
+    }
+
+    .contact-form {
+        background: var(--color-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: 16px;
+        padding: 28px 24px;
+    }
+
+    .contact-form h3 {
+        color: var(--color-text-strong);
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0 0 20px 0;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+        opacity: 0.8;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 14px;
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-card-border);
+        border-radius: 8px;
+        color: var(--color-text-strong);
+        font-family: inherit;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+        border: none;
+        border-radius: 999px;
+        color: var(--color-button-text);
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(255,107,53,0.4);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+        text-align: center;
+        padding: 30px 20px;
+        background: var(--color-footer-bg);
+        border-top: 1px solid var(--color-card-border);
+        font-size: 11px;
+        color: var(--color-text);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .footer-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .footer-logo {
+        height: 50px;
+        border-radius: 8px;
+        transition: transform 0.25s ease;
+    }
+
+    .footer-logo:hover {
+        transform: translateY(-2px);
+    }
+
+    .footer-credit {
+        margin-top: 10px;
+        opacity: 0.7;
+    }
+
+    .footer-credit a {
+        color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    .footer-credit a:hover {
+        text-decoration: underline;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 880px) {
+        header {
+            padding: 12px 16px;
+        }
+
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header nav {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: var(--color-header-bg);
+            padding: 10px 18px 16px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+            transform: translateY(-120%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            z-index: 90;
+            border-bottom: 1px solid var(--color-card-border);
+        }
+
+        body.nav-open header nav {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        header nav a,
+        .theme-toggle {
+            margin-left: 0;
+        }
+
+        header nav a {
+            font-size: 13px;
+            letter-spacing: 0.12em;
+        }
+
+        .theme-toggle {
+            align-self: stretch;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-logo {
+            height: 160px;
+            order: -1;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+        }
+
+        .trust-strip {
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .services-strip-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .promos-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .coverage-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="container">
-    <div class="header-row">
-      <a class="brand" href="/index.html">
-        <img src="/assets/img/Logo.jpg" alt="Chucks Electric & Sons logo" />
-        <div class="name">
-          <strong>Chucks Electric & Sons</strong>
-          <span>Family-owned • Serving NEPA since 1986</span>
+<!-- Landing Splash -->
+<div id="landing">
+    <div class="electric-grid"></div>
+    <div class="landing-inner">
+        <div class="logo-anim-wrap">
+            <img src="assets/img/Logo.jpg" alt="Chucks Electric & Sons Logo" class="logo-anim">
         </div>
-      </a>
-
-      <nav class="nav" data-nav aria-label="Primary navigation">
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="cta">
-        <a class="btn" href="tel:+15703693827">Call 570-369-3827</a>
-        <a class="btn primary" href="#contact">Request Estimate</a>
-      </div>
-
-      <button class="burger" data-burger aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+        <h1>Quality Electrical Services Since 1986</h1>
+        <p>Family-owned electricians serving Northeast Pennsylvania with reliability, clear communication, and customer-first service.</p>
+        <button id="enter-site" type="button">Enter Site</button>
     </div>
-
-    <div id="mobile-nav" class="mobile" data-mobile>
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="#contact">Contact</a>
-      <div class="row">
-        <a class="btn" href="tel:+15703693827">Call</a>
-        <a class="btn primary" href="#contact">Estimate</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="card">
-          <div class="hero-copy">
-            <div class="kicker">Residential • Commercial • Generators</div>
-            <h1 class="h1">Quality electrical services across Northeast Pennsylvania.</h1>
-            <p class="lead">
-              Chucks Electric & Sons has been serving NEPA since 1986 — with a focus on reliability,
-              clear communication, and customer-first service.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn primary" href="#contact">Request Estimate</a>
-              <a class="btn" href="tel:+15703693827">Call 570-369-3827</a>
-              <a class="btn" href="#services">View Services</a>
-            </div>
-
-            <div class="trust">
-              <div class="badge">Serving Pike & Wayne Counties</div>
-              <div class="badge">Since 1986</div>
-              <div class="badge">Family-Owned</div>
-            </div>
-
-            <p class="small" style="margin-top:12px;">
-              Small commercial work may also be available in Monroe, Northampton, and Lehigh counties.
-            </p>
-          </div>
-        </div>
-
-        <div class="card hero-media">
-          <!-- HERO IMAGE (from your folder): -->
-          <img src="/assets/img/wiring breaker box.jpg" alt="Licensed electrician wiring a breaker panel" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Services</h2>
-        <p>Simple categories, clear coverage.</p>
-      </div>
-
-      <div class="grid cols-3">
-        <div class="card card-pad">
-          <h3>Residential</h3>
-          <p>Service jobs, upgrades, repairs, and clean installs — scheduled and completed with care.</p>
-          <div class="pills">
-            <span class="pill">Renovations</span>
-            <span class="pill">Lighting</span>
-            <span class="pill">Upgrades</span>
-          </div>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Commercial</h3>
-          <p>Small to mid-size commercial jobs to keep your business safe, powered, and operating smoothly.</p>
-          <div class="pills">
-            <span class="pill">Maintenance</span>
-            <span class="pill">Service calls</span>
-            <span class="pill">Build-outs</span>
-          </div>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Generators</h3>
-          <p>Portable/backup and standby generator installs and service to keep you connected during outages.</p>
-          <div class="pills">
-            <span class="pill">Install</span>
-            <span class="pill">Annual service</span>
-            <span class="pill">Backup power</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hr"></div>
-
-      <div class="grid cols-2">
-        <div class="card card-pad">
-          <h3>Learn More About What We Do</h3>
-          <ul class="bullets">
-            <li>Renovation</li>
-            <li>Faulty circuitry</li>
-            <li>All purpose lighting</li>
-            <li>Smoke detectors</li>
-            <li>Wi-Fi activated technology (ex: Ring products)</li>
-            <li>Electric car charging ports (EV)</li>
-            <li>Electrical upgrades</li>
-            <li>New construction</li>
-            <li>Electrical heating & cooling</li>
-            <li>Smart thermostats (Google Nest, Honeywell, Mysa)</li>
-            <li>Mobile homes / converters</li>
-            <li>Water heaters</li>
-            <li>Septic pumps</li>
-            <li>Surge protectors</li>
-          </ul>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Fast next steps</h3>
-          <p>Tell us what you need and where you’re located — we’ll follow up with options and scheduling.</p>
-          <div class="hero-actions" style="margin-top:12px;">
-            <a class="btn primary" href="#contact">Request Estimate</a>
-            <a class="btn" href="tel:+15703693827">Call Now</a>
-            <a class="btn" href="/gallery.html">See Work</a>
-          </div>
-          <p class="small" style="margin-top:10px;">
-            Phone: 570-369-3827 • Email: chuckselectric1986@gmail.com
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="promos" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>All Season Promotions</h2>
-        <p>Clear offers — no walls of text.</p>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="card card-pad">
-          <h3>Whole House Surge Protectors</h3>
-          <p class="small"><strong>$450.00 • 10% OFF</strong> — Call now.</p>
-          <p class="small">Price may vary depending on number of breakers needed and brand.</p>
-          <a class="btn primary" href="tel:+15703693827">Call 570-369-3827</a>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Labeling Electrical Panels</h3>
-          <p class="small">
-            240v 200 amp panel: <strong>$350.00</strong><br/>
-            240v 100 amp panel: <strong>$250.00</strong><br/>
-            320v (2×200 amp panels): <strong>$500.00</strong><br/>
-            Sub panels add-on: <strong>$120.00</strong>
-          </p>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Servicing Generator (Annually)</h3>
-          <p class="small"><strong>$575.00</strong> — oil change, filters, battery testing, spark plugs, voltage readings & contacts.</p>
-          <a class="btn" href="#contact">Request Quote</a>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Installing Smart Home Monitor</h3>
-          <p class="small"><strong>$850.00</strong> — monitor appliance usage, heating usage, or total electrical usage.</p>
-          <a class="btn" href="#contact">Request Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Recent Work</h2>
-        <p>A few examples from your gallery.</p>
-      </div>
-
-      <div class="gallery">
-        <a href="/gallery.html"><img src="/assets/img/Basement Lights.jpg" alt="Basement lighting installation"></a>
-        <a href="/gallery.html"><img src="/assets/img/Chandelier.jpg" alt="Chandelier installation"></a>
-        <a href="/gallery.html"><img src="/assets/img/Kitchen Lights.jpg" alt="Kitchen lighting project"></a>
-        <a href="/gallery.html"><img src="/assets/img/generator.jpg" alt="Backup generator installation"></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Get in Touch</h2>
-        <p>Request an estimate or ask a question.</p>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="card card-pad">
-          <h3>Contact</h3>
-          <p class="small">
-            Phone: <a href="tel:+15703693827">570-369-3827</a><br/>
-            Email: <a href="mailto:chuckselectric1986@gmail.com">chuckselectric1986@gmail.com</a>
-          </p>
-
-          <div class="hr"></div>
-
-          <h3>Opening Hours</h3>
-          <p class="small">
-            Mon – Fri: 8:00 am – 6:00 pm<br/>
-            Saturday: 8:00 am – 1:00 pm<br/>
-            Sunday: Closed
-          </p>
-
-          <div class="hr"></div>
-
-          <a class="btn primary" href="tel:+15703693827">Call Now</a>
-        </div>
-
-        <div class="card card-pad">
-          <h3>Message</h3>
-          <form class="form" action="mailto:chuckselectric1986@gmail.com" method="post" enctype="text/plain">
-            <div class="field">
-              <label for="first">First Name</label>
-              <input id="first" name="First Name" autocomplete="given-name" required />
-            </div>
-
-            <div class="field">
-              <label for="last">Last Name</label>
-              <input id="last" name="Last Name" autocomplete="family-name" required />
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="Email" type="email" autocomplete="email" required />
-            </div>
-
-            <div class="field">
-              <label for="msg">Message</label>
-              <textarea id="msg" name="Message" placeholder="Tell us what you need and your town/location." required></textarea>
-            </div>
-
-            <button class="btn primary" type="submit">Send</button>
-            <p class="small" style="margin:0;">Prefer a call? Use the “Call” button below.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div class="sticky" aria-label="Sticky call to action">
-  <a class="btn" href="tel:+15703693827">Call</a>
-  <a class="btn primary" href="#contact">Estimate</a>
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <strong>Chucks Electric & Sons</strong>
-        <p class="small">Serving Northeast Pennsylvania since 1986.</p>
-        <p class="small">
-          Phone: <a href="tel:+15703693827">570-369-3827</a><br/>
-          Email: <a href="mailto:chuckselectric1986@gmail.com">chuckselectric1986@gmail.com</a>
-        </p>
-      </div>
+<!-- Main Site Content -->
+<main id="site-content" class="hidden">
 
-      <div>
-        <p class="small">
-          <strong>Quick Links</strong><br/>
-          <a href="/about.html">About</a><br/>
-          <a href="/gallery.html">Gallery</a><br/>
-          <a href="#services">Services</a><br/>
-          <a href="#contact">Contact</a>
-        </p>
-        <p class="small">
-          © <span id="year"></span> Chucks Electric & Sons. All rights reserved.
-        </p>
-      </div>
+<header>
+    <a href="index.html" class="logo-link">
+        <img id="headerLogo" src="assets/img/Logo.jpg" alt="Chucks Electric & Sons Logo">
+    </a>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="theme-toggle" type="button">Dark mode</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Chucks Electric & Sons</h1>
+        <p>Family-owned electricians serving Northeast Pennsylvania since 1986. Residential, commercial, and generator services with a focus on reliability and customer-first care.</p>
+        <div class="divider"></div>
+        <a class="service-btn" href="#contact">Request Estimate</a>
+    </div>
+    <img id="heroLogo" class="hero-logo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo">
+</section>
+
+<div class="trust-strip">
+    <div class="trust-badge">
+        <div class="value">38+</div>
+        <div class="label">Years of Service</div>
+    </div>
+    <div class="trust-badge">
+        <div class="value">5</div>
+        <div class="label">Counties Served</div>
+    </div>
+    <div class="trust-badge">
+        <div class="value">100%</div>
+        <div class="label">Licensed & Insured</div>
+    </div>
+</div>
+
+<section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+        Chucks Electric & Sons was founded in 1986 with a simple philosophy: do honest work at fair prices, and treat every customer's home like your own. What started as a one-man operation has grown into a trusted family business now in its third generation.
+    </p>
+    <p>
+        We've wired everything from cozy lake cabins to commercial buildings, installed generators that kept families warm during nor'easters, and helped countless homeowners modernize their electrical systems safely.
+    </p>
+</section>
+
+<section class="services-strip" id="services">
+    <div class="services-strip-header">
+        <div>
+            <h2>What We Do</h2>
+            <div class="services-strip-subtitle">
+                From simple repairs to complete installations, we handle residential, commercial, and generator services with precision and care.
+            </div>
+        </div>
+        <div class="services-strip-cta">
+            <a href="services.html">View all services</a>
+        </div>
     </div>
 
-    <!-- Powered by Grand Line Analytics -->
-    <div class="powered-by">
-      <a
-        href="https://grandlineanalytics.com"
-        target="_blank"
-        rel="noopener"
-        aria-label="Powered by Grand Line Analytics"
-      >
-        <img
-          src="/assets/img/grandline.ico"
-          alt="Grand Line Analytics logo"
-          class="powered-logo"
-        />
-        <span class="powered-text">
-          Powered by <strong>Grand Line Analytics</strong>
-        </span>
-      </a>
+    <div class="services-strip-grid">
+        <div class="services-pill">
+            <h3>Residential</h3>
+            <p>Service jobs, upgrades, repairs, and clean installs scheduled and completed with care for your home.</p>
+        </div>
+        <div class="services-pill">
+            <h3>Commercial</h3>
+            <p>Small to mid-size commercial jobs to keep your business safe, powered, and operating smoothly.</p>
+        </div>
+        <div class="services-pill">
+            <h3>Generators</h3>
+            <p>Portable, backup, and standby generator installs and service to keep you connected during outages.</p>
+        </div>
     </div>
-  </div>
+</section>
+
+<section class="promos" id="promos">
+    <div class="promos-header">
+        <h2>All Season Promotions</h2>
+        <p>Clear pricing, no surprises.</p>
+    </div>
+
+    <div class="promos-grid">
+        <div class="promo-card featured">
+            <h3>Whole House Surge Protectors</h3>
+            <div class="price">$450</div>
+            <p>Protect your entire home from power surges and electrical damage.</p>
+            <ul>
+                <li>Professional installation</li>
+                <li>Price varies by breaker count</li>
+                <li>Multiple brand options</li>
+            </ul>
+            <a href="tel:+15703693827" class="promo-cta">Call Now</a>
+        </div>
+
+        <div class="promo-card">
+            <h3>Electrical Panel Labeling</h3>
+            <div class="price">From $250</div>
+            <p>Know exactly what each breaker controls.</p>
+            <ul>
+                <li>200 amp panel: $350</li>
+                <li>100 amp panel: $250</li>
+                <li>320v (2x200): $500</li>
+                <li>Sub panel add-on: $120</li>
+            </ul>
+            <a href="#contact" class="promo-cta">Get Quote</a>
+        </div>
+
+        <div class="promo-card">
+            <h3>Generator Annual Service</h3>
+            <div class="price">$575</div>
+            <p>Keep your backup power running reliably.</p>
+            <ul>
+                <li>Oil change & filters</li>
+                <li>Battery testing</li>
+                <li>Spark plugs</li>
+                <li>Voltage readings & contacts</li>
+            </ul>
+            <a href="#contact" class="promo-cta">Schedule Service</a>
+        </div>
+
+        <div class="promo-card">
+            <h3>Smart Home Monitor</h3>
+            <div class="price">$850</div>
+            <p>Track your electrical usage in real-time.</p>
+            <ul>
+                <li>Monitor appliance usage</li>
+                <li>Track heating costs</li>
+                <li>Total electrical usage</li>
+                <li>Professional installation</li>
+            </ul>
+            <a href="#contact" class="promo-cta">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-preview">
+    <div class="gallery-preview-header">
+        <h2>Recent Work</h2>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="assets/img/Basement_Lights.jpg" alt="Basement lighting installation">
+        </div>
+        <div class="gallery-item">
+            <img src="assets/img/Chandelier.jpg" alt="Chandelier installation">
+        </div>
+        <div class="gallery-item">
+            <img src="assets/img/Kitchen_Lights.jpg" alt="Kitchen lighting">
+        </div>
+        <div class="gallery-item">
+            <img src="assets/img/generator.jpg" alt="Generator installation">
+        </div>
+    </div>
+    <div class="gallery-cta">
+        <a href="gallery.html">View Full Gallery</a>
+    </div>
+</section>
+
+<section class="coverage" id="coverage">
+    <div class="coverage-header">
+        <h2>Service Area</h2>
+    </div>
+    <div class="coverage-grid">
+        <div class="county-list">
+            <div class="county-item primary">
+                <span class="county-dot"></span>
+                <span>Pike County</span>
+            </div>
+            <div class="county-item primary">
+                <span class="county-dot"></span>
+                <span>Wayne County</span>
+            </div>
+            <div class="county-item secondary">
+                <span class="county-dot"></span>
+                <span>Monroe County</span>
+            </div>
+            <div class="county-item secondary">
+                <span class="county-dot"></span>
+                <span>Northampton County</span>
+            </div>
+            <div class="county-item secondary">
+                <span class="county-dot"></span>
+                <span>Lehigh County</span>
+            </div>
+        </div>
+        <div class="coverage-info">
+            <h3>Primary Service Area</h3>
+            <p>We provide full residential and commercial electrical services throughout Pike and Wayne counties. Our team is based locally and ready to respond quickly to your needs.</p>
+            <div class="coverage-note">
+                <strong>Extended Coverage:</strong> Small commercial work may also be available in Monroe, Northampton, and Lehigh counties. Contact us to discuss your project.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Contact</h3>
+            <p>
+                Phone: <a href="tel:+15703693827">570-369-3827</a><br>
+                Email: <a href="mailto:chuckselectric1986@gmail.com">chuckselectric1986@gmail.com</a>
+            </p>
+
+            <h3>Business Hours</h3>
+            <ul class="hours-list">
+                <li><span>Monday - Friday</span><span>8:00 AM - 6:00 PM</span></li>
+                <li><span>Saturday</span><span>8:00 AM - 1:00 PM</span></li>
+                <li><span>Sunday</span><span>Closed</span></li>
+            </ul>
+        </div>
+
+        <div class="contact-form">
+            <h3>Request Estimate</h3>
+            <form action="mailto:chuckselectric1986@gmail.com" method="post" enctype="text/plain">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your project and location."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <img id="footerLogo" class="footer-logo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo">
+        <div>© 2025 Chucks Electric & Sons — All Rights Reserved</div>
+        <div class="footer-credit">
+            Powered by <a href="https://grandlineanalytics.com" target="_blank">Grand Line Analytics</a>
+        </div>
+    </div>
 </footer>
-<script src="/assets/js/main.js"></script>
+
+</main>
+
+<script>
+(function () {
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const navToggle = document.getElementById('navToggle');
+
+    function applyTheme(theme) {
+        const isDark = theme === 'dark';
+        body.classList.toggle('dark-mode', isDark);
+        if (toggle) {
+            toggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+        }
+    }
+
+    const saved = localStorage.getItem('ces-theme');
+    applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('ces-theme', newTheme);
+        });
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', function () {
+            body.classList.toggle('nav-open');
+        });
+    }
+
+    document.querySelectorAll('header nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            body.classList.remove('nav-open');
+        });
+    });
+})();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const landing = document.getElementById('landing');
+    const site = document.getElementById('site-content');
+    const btn = document.getElementById('enter-site');
+
+    const alreadyEntered = window.sessionStorage.getItem('ces-entered') === '1';
+    if (alreadyEntered) {
+        if (landing) landing.style.display = 'none';
+        if (site) site.classList.remove('hidden');
+        return;
+    }
+
+    if (btn && landing && site) {
+        btn.addEventListener('click', function () {
+            window.sessionStorage.setItem('ces-entered', '1');
+            landing.classList.add('hidden');
+            
+            setTimeout(function () {
+                landing.style.display = 'none';
+                site.classList.remove('hidden');
+            }, 800);
+        });
+    }
+});
+</script>
+
 </body>
 </html>
