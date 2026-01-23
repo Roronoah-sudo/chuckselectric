@@ -158,6 +158,73 @@
         box-shadow: 0 0 30px rgba(255,107,53,0.5);
     }
 
+    /* ---------- ELECTRIC BACKGROUND FOR MAIN SITE ---------- */
+    .electric-bg-main {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .electric-grid-main {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background-image: 
+            linear-gradient(rgba(255,107,53,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,107,53,0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridMove 25s linear infinite;
+    }
+
+    @keyframes gridMove {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(60px, 60px); }
+    }
+
+    .electric-bolt-main {
+        position: absolute;
+        width: 1px;
+        height: 80px;
+        background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
+        opacity: 0;
+        animation: boltFlash 5s ease-in-out infinite;
+    }
+
+    .electric-bolt-main:nth-child(2) { left: 15%; animation-delay: 0s; }
+    .electric-bolt-main:nth-child(3) { left: 35%; animation-delay: 1.5s; }
+    .electric-bolt-main:nth-child(4) { left: 55%; animation-delay: 3s; }
+    .electric-bolt-main:nth-child(5) { left: 75%; animation-delay: 2s; }
+    .electric-bolt-main:nth-child(6) { left: 90%; animation-delay: 4s; }
+
+    @keyframes boltFlash {
+        0%, 88%, 100% { opacity: 0; transform: translateY(-100px); }
+        90%, 96% { opacity: 0.6; transform: translateY(100vh); }
+    }
+
+    .glow-orb-main {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.08;
+        animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    .glow-orb-main.orange { width: 350px; height: 350px; background: var(--color-accent); top: 20%; right: 10%; }
+    .glow-orb-main.orange-dark { width: 280px; height: 280px; background: #e55a2b; bottom: 30%; left: 5%; animation-delay: -10s; }
+
+    @keyframes orbFloat {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(25px, -25px) scale(1.05); }
+        66% { transform: translate(-15px, 15px) scale(0.95); }
+    }
+
     /* ---------- HEADER & NAV ---------- */
     header {
         background: var(--color-header-bg);
@@ -924,33 +991,42 @@
     .powered-by-card {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        margin-top: 16px;
-        padding: 12px 20px;
-        background: var(--color-bg-alt);
-        border: 1px solid var(--color-card-border);
-        border-radius: 10px;
+        gap: 14px;
+        margin-top: 20px;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #064A52 0%, #043940 100%);
+        border: 1px solid rgba(216,168,66,0.4);
+        border-radius: 8px;
         text-decoration: none;
-        color: var(--color-text);
-        font-size: 12px;
-        letter-spacing: 0.06em;
+        color: #C9CED3;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
         transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .powered-by-card:hover {
-        border-color: var(--color-accent);
+        border-color: #D8A842;
         transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(255,107,53,0.2);
+        box-shadow: 0 4px 24px rgba(216,168,66,0.25);
     }
 
     .powered-by-card .gla-logo {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         border-radius: 4px;
     }
 
-    .powered-by-card strong {
-        color: var(--color-accent);
+    .powered-by-card .powered-text {
+        color: #D8A842;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+    }
+
+    .powered-by-card .powered-label {
+        color: #8B9AA3;
+        font-weight: 600;
+        margin-right: 8px;
     }
 
     .footer-credit {
@@ -1089,6 +1165,18 @@
 
 <!-- Main Site Content -->
 <main id="site-content" class="hidden">
+
+<!-- Electric Background Animation -->
+<div class="electric-bg-main">
+    <div class="electric-grid-main"></div>
+    <div class="electric-bolt-main"></div>
+    <div class="electric-bolt-main"></div>
+    <div class="electric-bolt-main"></div>
+    <div class="electric-bolt-main"></div>
+    <div class="electric-bolt-main"></div>
+    <div class="glow-orb-main orange"></div>
+    <div class="glow-orb-main orange-dark"></div>
+</div>
 
 <header>
     <a href="index.html" class="logo-link">
@@ -1346,12 +1434,9 @@
         <div>© 2025 Chucks Electric & Sons — All Rights Reserved</div>
         
         <a href="https://grandlineanalytics.com" target="_blank" class="powered-by-card">
-            <svg class="gla-logo" viewBox="0 0 32 32" width="24" height="24">
-                <rect width="32" height="32" rx="4" fill="#064A52"/>
-                <path d="M8 22 L16 10 L24 22 L20 22 L16 16 L12 22 Z" fill="#D8A842"/>
-                <circle cx="16" cy="8" r="2" fill="#D8A842"/>
-            </svg>
-            <span>Powered by <strong>Grand Line Analytics</strong></span>
+            <span class="powered-label">Powered by</span>
+            <img src="assets/img/grandline-logo.png" alt="Grand Line Analytics" class="gla-logo">
+            <span class="powered-text">Grand Line Analytics</span>
         </a>
     </div>
 </footer>
@@ -1411,4 +1496,27 @@ document.addEventListener('DOMContentLoaded', function () {
     if (btn && landing && site) {
         btn.addEventListener('click', function () {
             window.sessionStorage.setItem('ces-entered', '1');
- 
+             landing.classList.add('hidden');
+            
+            setTimeout(function () {
+                landing.style.display = 'none';
+                site.classList.remove('hidden');
+            }, 800);
+        });
+    }
+    
+    // Handle hash navigation (like #contact)
+    if (window.location.hash && window.location.hash.length > 1) {
+        window.sessionStorage.setItem('ces-entered', '1');
+        if (landing) landing.style.display = 'none';
+        if (site) site.classList.remove('hidden');
+        setTimeout(function() {
+            const target = document.querySelector(window.location.hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+});
+</script>
+
+</body>
+</html>
