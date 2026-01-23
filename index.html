@@ -1570,7 +1570,7 @@
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function () {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
@@ -1636,4 +1636,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.location.hash && window.location.hash.length > 1) {
         window.sessionStorage.setItem('ces-entered', '1');
         if (landing) landing.style.display = 'none';
-        if (site) si
+        if (site) site.classList.remove('hidden');
+        setTimeout(function() {
+            const target = document.querySelector(window.location.hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+});
+</script>
+
+</body>
+</html>
