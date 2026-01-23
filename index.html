@@ -692,6 +692,8 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.4s ease;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 
     .gallery-item:hover img {
@@ -937,6 +939,67 @@
         resize: vertical;
     }
 
+    .form-group-full {
+        grid-column: 1 / -1;
+    }
+
+    .checkbox-group {
+        margin-bottom: 16px;
+    }
+
+    .checkbox-group label.group-label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+        opacity: 0.8;
+    }
+
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .checkbox-item:hover {
+        border-color: var(--color-accent);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--color-accent);
+        cursor: pointer;
+    }
+
+    .checkbox-item span {
+        font-size: 13px;
+        color: var(--color-text);
+    }
+
+    .checkbox-item:has(input:checked) {
+        border-color: var(--color-accent);
+        background: rgba(255,107,53,0.08);
+    }
+
+    .checkbox-item:has(input:checked) span {
+        color: var(--color-text-strong);
+    }
+
     .form-submit {
         width: 100%;
         padding: 14px;
@@ -1012,9 +1075,10 @@
     }
 
     .powered-by-card .gla-logo {
-        width: 28px;
-        height: 28px;
-        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        object-fit: contain;
     }
 
     .powered-by-card .powered-text {
@@ -1142,6 +1206,10 @@
         }
 
         .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .checkbox-grid {
             grid-template-columns: 1fr;
         }
     }
@@ -1390,7 +1458,7 @@
             <h3>Contact</h3>
             <p>
                 Phone: <a href="tel:+15703693827">570-369-3827</a><br>
-                Email: <a href="/cdn-cgi/l/email-protection#44272c31272f372128212730362d27757d7c72042329252d286a272b29"><span class="__cf_email__" data-cfemail="6b08031e0800180e070e081f1902085a52535d2b0c060a020745080406">[email&#160;protected]</span></a>
+                Email: <a href="mailto:chuckselectric1986@gmail.com">chuckselectric1986@gmail.com</a>
             </p>
 
             <h3>Business Hours</h3>
@@ -1414,13 +1482,72 @@
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your project and location."></textarea>
+                    <label for="address">Street Address</label>
+                    <input type="text" id="address" name="address" placeholder="123 Main Street">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City / Town</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP Code</label>
+                        <input type="text" id="zip" name="zip">
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="group-label">Services Needed (select all that apply)</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Residential">
+                            <span>Residential</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Commercial">
+                            <span>Commercial</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Generator">
+                            <span>Generator</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Panel Upgrade">
+                            <span>Panel Upgrade</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Lighting">
+                            <span>Lighting</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="EV Charging">
+                            <span>EV Charging</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Smart Home">
+                            <span>Smart Home</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="services" value="Other">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your project..."></textarea>
                 </div>
                 <button type="submit" class="form-submit">Send Message</button>
             </form>
