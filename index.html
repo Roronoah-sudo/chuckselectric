@@ -455,6 +455,74 @@
         margin-bottom: 16px;
     }
 
+    /* Family Banner */
+    .family-banner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-top: 30px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--color-card-border);
+        background: var(--color-bg-alt);
+    }
+
+    .family-banner-img {
+        width: 100%;
+        height: 100%;
+        min-height: 220px;
+        object-fit: cover;
+    }
+
+    .family-banner-content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .family-banner-badge {
+        display: inline-block;
+        width: fit-content;
+        padding: 6px 12px;
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 4px;
+        margin-bottom: 12px;
+    }
+
+    .family-banner-content p {
+        color: var(--color-text-strong);
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+    }
+
+    .family-banner-link {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid var(--color-accent);
+        border-radius: 999px;
+        color: var(--color-accent);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        width: fit-content;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .family-banner-link:hover {
+        background: var(--color-accent);
+        color: var(--color-button-text);
+    }
+
     /* ---------- SERVICES STRIP ---------- */
     .services-strip {
         padding: 60px 40px;
@@ -1189,6 +1257,28 @@
             grid-template-columns: 1fr;
         }
 
+        .family-banner {
+            grid-template-columns: 1fr;
+        }
+
+        .family-banner-img {
+            height: 200px;
+        }
+
+        .family-banner-content {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .family-banner-badge {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .family-banner-link {
+            margin: 0 auto;
+        }
+
         .promos-grid {
             grid-template-columns: 1fr;
         }
@@ -1300,6 +1390,15 @@
     <p>
         We've wired everything from cozy lake cabins to commercial buildings, installed generators that kept families warm during nor'easters, and helped countless homeowners modernize their electrical systems safely.
     </p>
+    
+    <div class="family-banner">
+        <img src="assets/img/Staff.jpg" alt="The Chucks Electric Family Team" class="family-banner-img">
+        <div class="family-banner-content">
+            <span class="family-banner-badge">Family-Owned Since 1986</span>
+            <p>Three generations of trusted electrical service</p>
+            <a href="about.html" class="family-banner-link">Meet our team</a>
+        </div>
+    </div>
 </section>
 
 <section class="services-strip" id="services">

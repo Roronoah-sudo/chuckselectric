@@ -166,6 +166,60 @@
         margin-bottom: 30px;
     }
 
+    /* Family Hero Section */
+    .family-hero {
+        position: relative;
+        margin: -20px -20px 40px -20px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--color-card-border);
+    }
+
+    .family-hero-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .family-hero-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px 30px;
+        background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+    }
+
+    .family-hero-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        background: var(--color-accent);
+        color: var(--color-button-text);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border-radius: 4px;
+        margin-bottom: 12px;
+    }
+
+    .family-hero-title {
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .family-hero-subtitle {
+        color: rgba(255,255,255,0.85);
+        font-size: 16px;
+        margin: 0;
+        max-width: 500px;
+    }
+
     .content-section {
         margin-bottom: 50px;
     }
@@ -466,6 +520,11 @@
         main { margin-top: 40px; }
         .team-grid { grid-template-columns: 1fr; }
         .values-grid { grid-template-columns: 1fr; }
+        .family-hero { margin: -10px -10px 30px -10px; border-radius: 12px; }
+        .family-hero-image { height: 280px; }
+        .family-hero-overlay { padding: 24px 20px; }
+        .family-hero-title { font-size: 22px; }
+        .family-hero-subtitle { font-size: 14px; }
     }
 </style>
 </head>
@@ -503,6 +562,16 @@
     <div class="pill">Chucks Electric & Sons</div>
     <h1>About Our Family</h1>
     <div class="tagline">Three generations of electrical expertise serving Northeast Pennsylvania.</div>
+
+    <!-- Family Hero Banner -->
+    <div class="family-hero">
+        <img src="assets/img/Staff.jpg" alt="The Chucks Electric & Sons Family Team" class="family-hero-image">
+        <div class="family-hero-overlay">
+            <div class="family-hero-badge">Family-Owned Since 1986</div>
+            <h2 class="family-hero-title">Three Generations Strong</h2>
+            <p class="family-hero-subtitle">What started as one man's commitment to quality has grown into a family legacy of trusted electrical service across Northeast Pennsylvania.</p>
+        </div>
+    </div>
 
     <section class="content-section">
         <h2>Our Story</h2>
