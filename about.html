@@ -399,6 +399,30 @@
     }
 
     .footer-logo { height: 50px; border-radius: 8px; }
+    
+    .powered-by-card {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 16px;
+        padding: 12px 20px;
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-card-border);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--color-text);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .powered-by-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(255,107,53,0.2);
+    }
+    .powered-by-card .gla-logo { width: 24px; height: 24px; border-radius: 4px; }
+    .powered-by-card strong { color: var(--color-accent); }
+    
     .footer-credit { margin-top: 10px; opacity: 0.7; }
     .footer-credit a { color: var(--color-accent); text-decoration: none; }
 
@@ -566,9 +590,14 @@
     <div class="footer-inner">
         <img id="footerLogo" class="footer-logo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo">
         <div>© 2025 Chucks Electric & Sons — All Rights Reserved</div>
-        <div class="footer-credit">
-            Powered by <a href="https://grandlineanalytics.com" target="_blank">Grand Line Analytics</a>
-        </div>
+        <a href="https://grandlineanalytics.com" target="_blank" class="powered-by-card">
+            <svg class="gla-logo" viewBox="0 0 32 32" width="24" height="24">
+                <rect width="32" height="32" rx="4" fill="#064A52"/>
+                <path d="M8 22 L16 10 L24 22 L20 22 L16 16 L12 22 Z" fill="#D8A842"/>
+                <circle cx="16" cy="8" r="2" fill="#D8A842"/>
+            </svg>
+            <span>Powered by <strong>Grand Line Analytics</strong></span>
+        </a>
     </div>
 </footer>
 

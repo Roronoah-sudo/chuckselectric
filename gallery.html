@@ -37,7 +37,11 @@
     .gallery-tag{display:inline-block;padding:3px 8px;background:rgba(255,107,53,.25);border-radius:999px;font-size:10px;color:var(--color-accent);margin-top:8px;text-transform:uppercase;letter-spacing:.1em}
     footer{text-align:center;padding:30px 20px;background:var(--color-footer-bg);border-top:1px solid var(--color-card-border);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
     .footer-inner{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
-    .footer-logo{height:50px;border-radius:8px}.footer-credit{margin-top:10px;opacity:.7}.footer-credit a{color:var(--color-accent);text-decoration:none}
+    .footer-logo{height:50px;border-radius:8px}
+    .powered-by-card{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:12px 20px;background:var(--color-bg-alt);border:1px solid var(--color-card-border);border-radius:10px;text-decoration:none;color:var(--color-text);font-size:12px;letter-spacing:.06em;transition:border-color .3s,transform .3s,box-shadow .3s}
+    .powered-by-card:hover{border-color:var(--color-accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(255,107,53,.2)}
+    .powered-by-card .gla-logo{width:24px;height:24px;border-radius:4px}
+    .powered-by-card strong{color:var(--color-accent)}
     @media(max-width:880px){header{padding:12px 16px}.nav-toggle{display:inline-flex;align-items:center;justify-content:center}header img{height:50px}header nav{position:fixed;top:64px;left:0;right:0;background:var(--color-header-bg);padding:10px 18px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;box-shadow:0 8px 18px rgba(0,0,0,.6);transform:translateY(-120%);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s;z-index:90;border-bottom:1px solid var(--color-card-border)}body.nav-open header nav{transform:translateY(0);opacity:1;pointer-events:auto}header nav a,.theme-toggle{margin-left:0}.theme-toggle{align-self:stretch;text-align:center;margin-top:4px}.gallery-grid{grid-template-columns:repeat(2,1fr)}
     }@media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
 </style>
@@ -67,23 +71,30 @@
         <button class="filter-btn" data-filter="lighting">Lighting</button>
     </div>
     <div class="gallery-grid">
-        <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Basement_Lights.jpg" alt="Basement lighting"><div class="gallery-info"><h3>Basement Lighting</h3><p>Full basement lighting upgrade</p><span class="gallery-tag">Residential</span></div></div>
+        <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Basement%20Lights.jpg" alt="Basement lighting"><div class="gallery-info"><h3>Basement Lighting</h3><p>Full basement lighting upgrade</p><span class="gallery-tag">Residential</span></div></div>
         <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Chandelier.jpg" alt="Chandelier"><div class="gallery-info"><h3>Chandelier Installation</h3><p>Custom chandelier wiring</p><span class="gallery-tag">Lighting</span></div></div>
-        <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Kitchen_Lights.jpg" alt="Kitchen lighting"><div class="gallery-info"><h3>Kitchen Renovation</h3><p>Under-cabinet and recessed lighting</p><span class="gallery-tag">Residential</span></div></div>
+        <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Kitchen%20Lights.jpg" alt="Kitchen lighting"><div class="gallery-info"><h3>Kitchen Renovation</h3><p>Under-cabinet and recessed lighting</p><span class="gallery-tag">Residential</span></div></div>
         <div class="gallery-item" data-category="generator"><img src="assets/img/generator.jpg" alt="Generator"><div class="gallery-info"><h3>Standby Generator</h3><p>Whole-house backup power</p><span class="gallery-tag">Generator</span></div></div>
-        <div class="gallery-item" data-category="residential"><img src="assets/img/wiring_breaker_box.jpg" alt="Panel"><div class="gallery-info"><h3>Panel Upgrade</h3><p>200-amp electrical panel</p><span class="gallery-tag">Residential</span></div></div>
-        <div class="gallery-item" data-category="residential"><img src="assets/img/Circuit_Breaker.jpg" alt="Circuit breaker"><div class="gallery-info"><h3>Circuit Breaker Service</h3><p>Breaker replacement and repair</p><span class="gallery-tag">Residential</span></div></div>
+        <div class="gallery-item" data-category="residential"><img src="assets/img/wiring%20breaker%20box.jpg" alt="Panel"><div class="gallery-info"><h3>Panel Upgrade</h3><p>200-amp electrical panel</p><span class="gallery-tag">Residential</span></div></div>
+        <div class="gallery-item" data-category="residential"><img src="assets/img/Circuit%20Breaker.jpg" alt="Circuit breaker"><div class="gallery-info"><h3>Circuit Breaker Service</h3><p>Breaker replacement and repair</p><span class="gallery-tag">Residential</span></div></div>
         <div class="gallery-item" data-category="lighting residential"><img src="assets/img/Floodlights.jpg" alt="Floodlights"><div class="gallery-info"><h3>Outdoor Floodlights</h3><p>Security and landscape lighting</p><span class="gallery-tag">Lighting</span></div></div>
-        <div class="gallery-item" data-category="generator residential"><img src="assets/img/Outdoor_Backup_outlet.jpg" alt="Backup outlet"><div class="gallery-info"><h3>Backup Power Outlet</h3><p>Outdoor generator connection</p><span class="gallery-tag">Generator</span></div></div>
+        <div class="gallery-item" data-category="generator residential"><img src="assets/img/Outdoor%20Backup%20outlet.jpg" alt="Backup outlet"><div class="gallery-info"><h3>Backup Power Outlet</h3><p>Outdoor generator connection</p><span class="gallery-tag">Generator</span></div></div>
         <div class="gallery-item" data-category="residential"><img src="assets/img/underground.jpg" alt="Underground wiring"><div class="gallery-info"><h3>Underground Wiring</h3><p>Buried electrical line installation</p><span class="gallery-tag">Residential</span></div></div>
-        <div class="gallery-item" data-category="residential"><img src="assets/img/black_box.jpg" alt="Electrical box"><div class="gallery-info"><h3>Electrical Box Install</h3><p>Outdoor rated enclosure</p><span class="gallery-tag">Residential</span></div></div>
+        <div class="gallery-item" data-category="residential"><img src="assets/img/black%20box.jpg" alt="Electrical box"><div class="gallery-info"><h3>Electrical Box Install</h3><p>Outdoor rated enclosure</p><span class="gallery-tag">Residential</span></div></div>
     </div>
 </main>
 <footer>
     <div class="footer-inner">
         <img class="footer-logo" src="assets/img/Logo.jpg" alt="Chucks Electric Logo">
         <div>© 2025 Chucks Electric & Sons — All Rights Reserved</div>
-        <div class="footer-credit">Powered by <a href="https://grandlineanalytics.com" target="_blank">Grand Line Analytics</a></div>
+        <a href="https://grandlineanalytics.com" target="_blank" class="powered-by-card">
+            <svg class="gla-logo" viewBox="0 0 32 32" width="24" height="24">
+                <rect width="32" height="32" rx="4" fill="#064A52"/>
+                <path d="M8 22 L16 10 L24 22 L20 22 L16 16 L12 22 Z" fill="#D8A842"/>
+                <circle cx="16" cy="8" r="2" fill="#D8A842"/>
+            </svg>
+            <span>Powered by <strong>Grand Line Analytics</strong></span>
+        </a>
     </div>
 </footer>
 <script>
